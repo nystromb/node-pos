@@ -1,0 +1,60 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #B2D1E5;
+}
+
+h1 {
+    margin:0;
+}
+
+.container {
+  margin-top:200px;
+}
+
+.login-logo {
+    padding:10px;
+    margin-bottom: 15px;
+}
+
+.login-logo, .login-footer {
+  text-align: center;
+}
+.login-box, .register-box {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding:20px;
+  opacity:0.75;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#customer-box, #invoice-box, .login-box, .register-box {
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(115,111,115,1);
+    -moz-box-shadow: 0px 0px 2px 1px rgba(115,111,115,1);
+    box-shadow: 0px 0px 2px 1px rgba(115,111,115,1);
+}
+
+@media (min-width: 1200px) {
+    #invoice-box {
+        margin-left: 25px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    #invoice-box {
+        margin-top:10px;
+    }
+
+}
+#customerphone {
+    margin-bottom:5px;
+}
+
+.modal {
+    background-color:black;
+    opacity:0.5;
+}

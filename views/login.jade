@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .container.login-box
+    .login-logo
+      h1 Your Logo Here
+    form(role='form', action="/login",method="post", style='max-width: 300px;')
+      if message.length > 0
+        if message == "User successfully created"
+          div.alert.alert-success #{message}
+        if message != "" && message != "User successfully created"
+          div.alert.alert-danger #{message}
+      .form-group
+          input.form-control(type='text', name="username", placeholder='Enter Username', required=true)
+      .form-group
+        input.form-control(type='password', name="password", placeholder='Password', required=true)
+      hr
+      button.btn.btn-primary(type='submit', style='float:right;') Log In
+      
+      

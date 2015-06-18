@@ -1,0 +1,96 @@
+#customer-modal-form.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header 
+        button.close(type='button', data-dismiss='modal', aria-label='close')
+          span &times;
+        h1 New Customer Form
+      .modal-body
+        form.form-horizontal
+            .form-group
+              label.col-md-4.control-label(for='customername') Customer Name   
+              .col-md-5
+                input#customername.form-control(name='customername', placeholder='Full Name', type='text')
+            .form-group
+              label.col-md-4.control-label(for='customerphone') Contact
+              .col-md-4
+                input#customerphone.form-control(type='tel', placeholder='Home Phone', name='home')
+                input#customerphone.form-control(type='tel', placeholder='Cell Phone', name='cell')
+                input#customerphone.form-control(type='tel', placeholder='Work Phone', name='work')
+            .form-group
+              label.col-md-4.control-label(for='customeraddr1') Address Line 1   
+              .col-md-5
+                input#customeraddr1.form-control(name='addr1', placeholder='Street Address', type='text')
+                p.help-block e.g. 123 Easy Street
+
+            .form-group
+              label.col-md-4.control-label(for='customeraddr2') Address Line 2   
+              .col-md-5
+                input#customeraddr2.form-control(name='customeraddr2', placeholder='Address Line 2', type='text')
+                p.help-block Apartment, unit, building, etc.
+            .form-group
+              label.col-md-4.control-label(for='customercity') City  
+              .col-md-4
+                input#customercity.form-control(name='customercity', placeholder='City', type='text')
+            .form-group
+              label.col-md-4.control-label(for='customerstate') State   
+              .col-md-5
+                select#customerstate.input-medium(name='customerstate')
+                  option Alabama
+                  option Alaska
+                  option Arizona
+                  option Arkansas
+                  option California
+                  option Colorado
+                  option Connecticut
+                  option Delaware
+                  option District Of Columbia
+                  option Florida
+                  option Georgia
+                  option Hawaii
+                  option Idaho
+                  option Illinois
+                  option Indiana
+                  option Iowa
+                  option Kansas
+                  option Kentucky
+                  option Louisiana
+                  option Maine
+                  option Maryland
+                  option Massachusetts
+                  option Michigan
+                  option Minnesota
+                  option Mississippi
+                  option Missouri
+                  option Montana
+                  option Nebraska
+                  option Nevada
+                  option New Hampshire
+                  option New Jersey
+                  option New Mexico
+                  option New York
+                  option North Carolina
+                  option North Dakota
+                  option Ohio
+                  option Oklahoma
+                  option Oregon
+                  option Pennsylvania
+                  option Rhode Island
+                  option South Carolina
+                  option South Dakota
+                  option Tennessee
+                  option Texas
+                  option Utah
+                  option Vermont
+                  option Virginia
+                  option Washington
+                  option West Virginia
+                  option Wisconsin
+                  option Wyoming
+            .form-group
+              label.col-md-4.control-label(for='customerzip') Zip Code   
+              .col-md-2
+                input#customerzip.form-control(name='customerzip', placeholder='Zip', type='text')
+      .modal-footer
+        button.btn.btn-primary Create Customer
+      

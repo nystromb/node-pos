@@ -1,0 +1,28 @@
+//
+   Created by brian on 5/20/2015.
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/simple-sidebar.css')
+  include sidebar
+  #page-content-wrapper
+    include togglebtn
+    .container
+      form.form-inline
+            .form-group
+              label.col-md-4.control-label(for='customer-name-search') Search Customer   
+              .col-md-7
+                input#customer-phone-search.form-control(name='customer-name-search', placeholder='(e.g. John Doe)', type='search')
+                p.help-block Search by name
+                input#customer-phone-search.form-control(name='customer-phone-search', placeholder='(888) 888-8888')
+                p.help-block Search by phone            
+          p(style='text-align:center;font-weight:bold;') OR
+            br
+            br
+            button.btn.btn-success(data-toggle='modal', data-target='#customer-modal-form') Add New Customer
+            hr
+        
+        
+        
+    include customer-modal-form
+    

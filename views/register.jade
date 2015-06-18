@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .container.register-box
+    h1 Register Page
+    if message.length > 0
+      div.alert.alert-danger #{message}
+    br
+    form(role='form', action="/signup",method="post", style='max-width: 300px;')
+      .form-group
+        input.form-control(type='text', name='firstName', placeholder='First Name', required=true)
+      .form-group
+        input.form-control(type='text', name='lastName', placeholder='Last Name', required=true)
+      hr
+      .form-group
+          input.form-control(type='text', name="username", placeholder='Enter Username', required=true)
+      .form-group
+        input.form-control(type='password', name="password", placeholder='Password', required=true)
+      .form-group
+        input.form-control(type='email', name="email", placeholder='Email (Optional)')
+      a(href='/login')  
+        button.btn.btn-default(type="button") &larr; Back to Login
+      button.btn.btn-primary(type='submit', style='float:right;') Submit
+      
