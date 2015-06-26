@@ -56,42 +56,6 @@ module.exports = function(app, passport) {
 		  res.redirect('/');
 	    });
     
-    // ====================================
-    // INVENTORY ==========================
-    //=====================================
-    app.route('/inventory')
-        .get(isLoggedIn, function(req, res){
-            res.render('inventory', {user: req.user}
-        );
-    });
-    
-    // ====================================
-    // DELIVERIES =========================
-    //=====================================
-    app.route('/deliveries')
-        .get(isLoggedIn, function(req, res){
-            res.render('deliveries', {user: req.user}
-        );
-    });
-    
-    // ====================================
-    // ORDERS  ============================
-    //=====================================
-    app.route('/orders')
-        .get(isLoggedIn, function(req, res){
-            res.render('orders', {user: req.user});
-    });
-    
-    
-    // ====================================
-    // INVOICES  ==========================
-    //=====================================
-    app.route('/invoice')
-        .get(isLoggedIn, function(req, res){
-            res.render('invoice', { user: req.user });
-        
-    });
-    
 };
 
 // route middleware to make sure
