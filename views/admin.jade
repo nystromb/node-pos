@@ -6,7 +6,11 @@ block content
   link(rel='stylesheet', href='/stylesheets/simple-sidebar.css')
   include sidebar
   #page-content-wrapper
-    include togglebtn
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand#menu-toggle(href='#menu-toggle')
+            img#menu-toggle(src='images/glyphicons-menu-hamburger.png')
     .container
       form.form-inline
             .form-group
