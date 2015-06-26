@@ -11,15 +11,14 @@ block content
         .navbar-header
           a.navbar-brand#menu-toggle(href='#menu-toggle')
             img#menu-toggle(src='images/glyphicons-menu-hamburger.png')
-    .container-fluid
-      form.form-inline
-        .form-group
-          label.col-md-4.control-label(for='customer-name-search') Search Customer   
-            .col-md-7
-              input#customer-phone-search.form-control(name='customer-name-search', placeholder='(e.g. John Doe)', type='search')
-              p.help-block Search by name
-              input#customer-phone-search.form-control(name='customer-phone-search', placeholder='(888) 888-8888')
-              p.help-block Search by phone            
+    .container-fluid(style='background-color:white; border-radius:3px;')
+      .row
+        form.navbar-form.navbar-left(role='search')
+          button.btn.btn-success(data-toggle='modal', data-target='#customer-modal-form') Add New Customer
+        form.navbar-form.navbar-right(role='search')
+          .form-group
+            input#customer-phone-search.form-control(name='customer-name-search', placeholder='(e.g. John Doe)', type='search')
+          button.btn.btn-default(type='submit' style='margin-left:5px;margin-right:15px;') Search
         
         
         
