@@ -11,7 +11,6 @@ var userSchema = mongoose.Schema({
     password     : String,
     isAdmin      : {type: Boolean, default: false},
     createdAt    : {type: Date, default: Date.now}
-
 });
 
 // methods ======================

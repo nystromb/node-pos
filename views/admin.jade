@@ -11,16 +11,21 @@ block content
         .navbar-header
           a.navbar-brand#menu-toggle(href='#menu-toggle')
             img#menu-toggle(src='images/glyphicons-menu-hamburger.png')
+        p.navbar-text.navbar-right(style='margin-right:10px;') Signed in as #{user.name}
     .container-fluid(style='background-color:white; border-radius:3px;')
       .row
         form.navbar-form.navbar-left(role='search')
-          button.btn.btn-success(data-toggle='modal', data-target='#customer-modal-form') Add New Customer
+          button.btn.btn-success#add-customer-btn(data-toggle='modal', data-target='#customer-modal-form') Add New Customer
         form.navbar-form.navbar-right(role='search')
           .form-group
-            input#customer-phone-search.form-control(name='customer-name-search', placeholder='(e.g. John Doe)', type='search')
-          button.btn.btn-default(type='submit' style='margin-left:5px;margin-right:15px;') Search
-        
-        
+            input#customer-phone-search.form-control(name='customer-name-search', placeholder='Search Customer', type='search')
+          .form-group
+            button.btn.btn-default#customer-search-btn(type='button' style='margin-left:5px;margin-right:15px;') Search
+    .container-fluid(style='background-color:white;margin-top:5px;border-radius:3px;')
+      .row
+        .col-md-5
+          h4 Customer Information
+          hr
+        .col-md-7
         
     include customer-modal-form
-    

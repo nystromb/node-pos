@@ -46,7 +46,17 @@ module.exports = function(app, passport) {
         .get(isLoggedIn, function(req, res) {
 		  res.render('admin', { user : req.user });
 	    });
-
+    
+	// =====================================
+	// CREATE CUSTOMER ROUTE ===============
+	// =====================================
+    app.route('/create/customer')
+        .post(function (req, res){
+          //test to see if is working first
+          console.log(req.body);
+        });
+    
+    
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================
