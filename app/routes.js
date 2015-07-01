@@ -1,6 +1,7 @@
+var Customer = require('./models/customer.js');
 // app/routes.js
 module.exports = function(app, passport) {
-
+    
 	// =====================================
 	// HOME PAGE ===========================
 	// =====================================
@@ -52,9 +53,29 @@ module.exports = function(app, passport) {
 	// =====================================
     app.route('/create/customer')
         .post(function (req, res){
-          //test to see if is working first
-          console.log(req.body);
-          
+            //test to see if is working first
+            console.log(req.body);
+        
+            //create a new customer using the customer schema
+            var newCustomer = new Customer();
+        
+            newCustomer.name = req.body.customername;
+            newCustomer.contact.phone_home = req.body.phonehome;
+            newCustomer.contact.phone_cell = req.body.phonecell;
+            newCustomer.contact.phone_work = req.body.phonework;
+            newCustomer.address.street = req.body.customeraddr1;
+            newCustomer.address.unit = req.body.customeraddr2;
+            newCustomer.address.city = req.body.customercity;
+            newCustomer.address.state = req.body.customerstate;
+            newCustomer.address.zip = req.body.customerzip;
+            
+            //magically save the customer in the cloud.. Ohh la la
+            newCustomer.save(function(err){
+                if(err)
+                    throw err;
+                
+                //send json response to handle on the client side
+            });
         });
     
     
