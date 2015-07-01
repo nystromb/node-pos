@@ -38,22 +38,33 @@ a {
     box-shadow: 0px 0px 2px 1px rgba(115,111,115,1);
 }
 
-@media (max-width: 750px) {
-    button#add-customer-btn{
-        display:block;
-        margin:auto;
-    }
-    button#customer-search-btn {
-        text-align: center;
-    }
-    input#customer-phone-search{
-        display:block;
-        margin:auto;
+.centered{
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #customer-search-btn {
         width:90%;
+        margin-top: 5px;
+    }
+    #customer-search {
+        width:90%;
+        margin:auto;
     }
 }
 
-#customerphone, #custfirstname {
+@media (min-width: 750px) {
+    #customer-search-btn {
+        margin-left:5px;
+    }
+}
+
+.container-fluid {
+    background-color: white;
+    border-radius: 3px;
+}
+
+#customerphone {
     margin-bottom:5px;
 }
 

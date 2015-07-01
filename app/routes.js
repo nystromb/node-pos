@@ -55,14 +55,17 @@ module.exports = function(app, passport) {
         .post(function (req, res){
             //test to see if is working first
             console.log(req.body);
-        
+            
             //create a new customer using the customer schema
             var newCustomer = new Customer();
-        
+            //get the customer data from req.body
+            //should probably validate on the server-side. I'll get to that later..
             newCustomer.name = req.body.customername;
+        
             newCustomer.contact.phone_home = req.body.phonehome;
             newCustomer.contact.phone_cell = req.body.phonecell;
             newCustomer.contact.phone_work = req.body.phonework;
+        
             newCustomer.address.street = req.body.customeraddr1;
             newCustomer.address.unit = req.body.customeraddr2;
             newCustomer.address.city = req.body.customercity;
@@ -72,9 +75,12 @@ module.exports = function(app, passport) {
             //magically save the customer in the cloud.. Ohh la la
             newCustomer.save(function(err){
                 if(err)
-                    throw err;
-                
-                //send json response to handle on the client side
+                    res.send(err);
+
+                res.json({
+                    message: "Customer has successfully been added.",
+                    data: newCustomer
+                });
             });
         });
     

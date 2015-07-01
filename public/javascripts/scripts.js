@@ -18,7 +18,7 @@ var options = {
                 type: 'POST',
                 dataType: 'json',
                 data: $form.serialize(),
-                success: function(data, textStatus, jqXHR) {
+                success: function(data) {
                     console.log('Great Success!');
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
