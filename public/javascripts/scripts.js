@@ -6,10 +6,7 @@ $("#menu-toggle").click(function(e) {
 var formIsValid = false;
 
 var options = {
-        button: {
-            selector: 'create-customer-btn',
-            disabled: 'disabled'
-        },
+        excluded: [':disabled'],
         onSuccess: function (e){
             console.log('onSuccess: form is valid');
             
@@ -29,10 +26,6 @@ var options = {
                 }
             });
         },
-        onError: function (e){
-
-        },
-        framework: 'bootstrap',
         icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -112,7 +105,7 @@ var options = {
 $(document).ready(function () {
     //validate form on click
     $('#create-customer-btn').on('click', function (e) {
-        $('#customer-form').formValidation(options)
+        $('#customer-form').formValidation(options);
     });
     
     //reset form when modal is hidden
