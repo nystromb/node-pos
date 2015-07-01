@@ -15,8 +15,8 @@
             label.col-md-4.control-label(for='customerphone') Contact
             .col-md-4
               input#customerphone.form-control(type='tel', placeholder='Home Phone', name='phonehome')
-              input#customerphone.form-control.ignore(type='tel', placeholder='Cell Phone', name='phonecell')
-              input#customerphone.form-control.ignore(type='tel', placeholder='Work Phone', name='phonework')
+              input#customerphone.form-control(type='tel', placeholder='Cell Phone', name='phonecell')
+              input#customerphone.form-control(type='tel', placeholder='Work Phone', name='phonework')
           .form-group
             label.col-md-4.control-label(for='customeraddr1') Address Line 1   
             .col-md-5
@@ -25,7 +25,7 @@
           .form-group
             label.col-md-4.control-label(for='customeraddr2') Address Line 2   
             .col-md-5
-              input#customeraddr2.form-control.ignore(name='customeraddr2', placeholder='Address Line 2', type='text')
+              input#customeraddr2.form-control(name='customeraddr2', placeholder='Address Line 2', type='text')
               p.help-block Apartment, unit, building, etc.
           .form-group
             label.col-md-4.control-label(for='customercity') City  
@@ -89,7 +89,10 @@
           .form-group
             label.col-md-4.control-label(for='customerzip') Zip Code   
             .col-md-4
-              input#customerzip.form-control(name='customerzip', placeholder='Zip', type='text', maxlength="5")
-      .modal-footer
-        button.btn.btn-primary#create-customer-btn Create Customer
+              input#customerzip.form-control(name='customerzip', placeholder='Zip', type='text')
+          .form-group
+            hr
+            .col-md-4.pull-right
+              button.btn.btn-primary#create-customer-btn Create Customer      
+        
       

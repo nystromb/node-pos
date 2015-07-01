@@ -54,6 +54,7 @@ module.exports = function(app, passport) {
         .post(function (req, res){
           //test to see if is working first
           console.log(req.body);
+          
         });
     
     

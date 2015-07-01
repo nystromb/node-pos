@@ -3,10 +3,36 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
-$(document).ready(function () {
-    $('#customer-form').formValidation({
+var formIsValid = false;
+
+var options = {
+        button: {
+            selector: 'create-customer-btn',
+            disabled: 'disabled'
+        },
+        onSuccess: function (e){
+            console.log('onSuccess: form is valid');
+            
+            var $form = $(e.target),
+                fv    = $form.data('formValidation');
+            
+            $.ajax({
+                url: '/create/customer',
+                type: 'POST',
+                dataType: 'json',
+                data: $form.serialize(),
+                success: function(data, textStatus, jqXHR) {
+                    console.log('Great Success!');
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('Something went wrong.');
+                }
+            });
+        },
+        onError: function (e){
+
+        },
         framework: 'bootstrap',
-        excluded: [':disabled'],
         icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -27,12 +53,12 @@ $(document).ready(function () {
             phonehome: {
                 validators: {
                     notEmpty: {
-                        message: 'This field is required.'
+                        message: 'At least one phone number is required.'
                     },
                     phone: {
                         country: "US",
                         message: "This is not a valid US phone number."
-                    }
+                    }   
                 },
             },
             phonecell: {
@@ -48,7 +74,7 @@ $(document).ready(function () {
                     phone: {
                         country: "US",
                         message: "This is not a valid US phone number."
-                    }
+                    }   
                 }
             },
             customeraddr1: {
@@ -56,13 +82,13 @@ $(document).ready(function () {
                     notEmpty: {
                         message: "Please enter a street address."
                     }
-                }
+                }   
             },
             customercity: {
                 validators: {
                     notEmpty: {
                         message: "Please enter a valid city."
-                    },
+                    },  
                     stringLength: {
                         min: 2,
                         message: "Please enter a valid city."
@@ -71,6 +97,9 @@ $(document).ready(function () {
             },
             customerzip: {
                 validators: {
+                    notEmpty: {
+                        message: "Please enter a zip code."
+                    },
                     zipCode: {
                         country: "US",
                         message: "Zip code must contain 5 digits."
@@ -78,14 +107,17 @@ $(document).ready(function () {
                 }
             }
         }
-    
+};
+
+$(document).ready(function () {
+    //validate form on click
+    $('#create-customer-btn').on('click', function (e) {
+        $('#customer-form').formValidation(options)
     });
-
-});
-
-$('#create-customer-btn').click(function (e) {
-    e.preventDefault();
-    console.log("Button Clicked");
     
+    //reset form when modal is hidden
+    $('#customer-modal-form').on('hidden.bs.modal', function() {
+        $('#customer-form').formValidation('resetForm', true);
+    });
     
 });
