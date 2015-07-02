@@ -12,21 +12,28 @@
             .col-md-5
               input.form-control(name='customername', placeholder='Full Name', type='text')
           .form-group
-            label.col-md-4.control-label(for='customerphone') Contact
+            label.col-md-4.control-label(for='phonehome') Contact
             .col-md-4
-              input#customerphone.form-control(type='tel', placeholder='Home Phone', name='phonehome')
-              input#customerphone.form-control(type='tel', placeholder='Cell Phone', name='phonecell')
-              input#customerphone.form-control(type='tel', placeholder='Work Phone', name='phonework')
+              input.form-control(type='tel', placeholder='Home Phone', name='phonehome')
           .form-group
-            label.col-md-4.control-label(for='customeraddr1') Address Line 1   
-            .col-md-5
-              input.form-control(name='customeraddr1', placeholder='Street Address', type='text')
-              p.help-block e.g. 123 Easy Street
+            label.col-md-4.control-label(for='phonecell')
+            .col-md-4
+              input.form-control(type='tel', placeholder='Cell Phone', name='phonecell')
           .form-group
-            label.col-md-4.control-label(for='customeraddr2') Address Line 2   
-            .col-md-5
-              input.form-control(name='customeraddr2', placeholder='Address Line 2', type='text')
-              p.help-block Apartment, unit, building, etc.
+            label.col-md-4.control-label(for='phonework')
+            .col-md-4
+              input.form-control(type='tel', placeholder='Work Phone', name='phonework')
+          fieldset
+            .form-group
+              label.col-md-4.control-label(for='customeraddr1') Address Line 1   
+              .col-md-5
+                input.form-control(name='customeraddr1', placeholder='Street Address', type='text')
+                p.help-block e.g. 123 Easy Street
+            .form-group
+              label.col-md-4.control-label(for='customeraddr2') Address Line 2   
+              .col-md-5
+                input.form-control(name='customeraddr2', placeholder='Address Line 2', type='text')
+                p.help-block Apartment, unit, building, etc.
           .form-group
             label.col-md-4.control-label(for='customercity') City  
             .col-md-4

@@ -66,7 +66,7 @@ var options = {
             phonehome: {
                 validators: {
                     notEmpty: {
-                        message: 'At least one phone number is required.'
+                        message: 'One phone number is required.'
                     },
                     phone: {
                         country: "US",

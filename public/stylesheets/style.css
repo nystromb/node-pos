@@ -60,6 +60,10 @@ a {
     }
 }
 
+.form-group {
+    margin-bottom:5px;
+}
+
 .customerlabel {
     font-weight:bold;
 }
@@ -69,10 +73,6 @@ a {
     border-radius: 3px;
 }
 
-#customerphone {
-    margin-bottom:5px;
-}
-
 .panel-heading {
     font-weight:bold;
     text-align:center;
@@ -80,4 +80,8 @@ a {
 
 .modal {
     background-color:black;
+}
+
+.text-right {
+    text-align: right;
 }
