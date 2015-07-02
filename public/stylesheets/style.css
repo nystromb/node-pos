@@ -46,6 +46,7 @@ a {
     #customer-search-btn {
         width:90%;
         margin-top: 5px;
+        margin-left:0;
     }
     #customer-search {
         width:90%;
@@ -59,6 +60,10 @@ a {
     }
 }
 
+.customerlabel {
+    font-weight:bold;
+}
+
 .container-fluid {
     background-color: white;
     border-radius: 3px;
@@ -66,6 +71,11 @@ a {
 
 #customerphone {
     margin-bottom:5px;
+}
+
+.panel-heading {
+    font-weight:bold;
+    text-align:center;
 }
 
 .modal {

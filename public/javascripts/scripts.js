@@ -19,7 +19,8 @@ var options = {
                 dataType: 'json',
                 data: $form.serialize(),
                 success: function(data) {
-                    console.log('Great Success!');
+                    console.log('Great Success! Here is what we got to work with:');
+                    console.log(data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('Something went wrong.');
