@@ -77,10 +77,10 @@ module.exports = function(app, passport) {
                 if(err)
                     res.send(err);
 
-                res.json({
+                res.send(JSON.stringify({
                     message: "Customer has successfully been added.",
-                    data: newCustomer
-                });
+                    customer: newCustomer
+                }));
             });
         });
     

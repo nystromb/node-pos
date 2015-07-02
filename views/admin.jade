@@ -29,28 +29,34 @@ block content
           .panel.panel-default
             .panel-heading Customer Information
             .panel-body
-              table.table.table-condensed
-                tbody
-                  tr
-                    td(style='font-weight:bold;') Customer Name:
-                    td#customername
-                  tr
-                    td(style='font-weight:bold;') Address:
-                    td#customeraddress  
-                  tr
-                    td(style='font-weight:bold;') Contact:
-                    td#customercontact
+              #customermessage
+              table.table.table-condensed#customer-info
+              hr
         .col-md-7
           .panel.panel-default
             .panel-heading Invoice
             table.table.table-striped
               thead
-                th SKU#
-                th Item
-                th Descripton
-                th Quantity
-                th Price
+                th.centered SKU#
+                th.centered Item
+                th.centered Quantity
+                th.centered Price
               tbody
                 tr
+                  td
+                  td
+                  td
+                  td
+                tr
+                  td
+                  td
+                  td
+                  td
+                tr
+                  td
+                  td
+                  td 
+                  td
+                
                 
     include customer-modal-form

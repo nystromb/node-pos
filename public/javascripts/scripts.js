@@ -3,7 +3,20 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
-var formIsValid = false;
+function phoneFormat(number){
+    var p = number.toString();
+    var result = "(" + p.substr(0,3) + ") " + p.substr(3,3) + " - " + p.substr(6,9);
+    return result;
+}
+function printCustomer(data){
+    var customerinfo = document.getElementById('customer-info');
+        customerinfo.innerHTML += "<tbody>";
+        customerinfo.innerHTML += "<tr><td style='font-weight:bold;'>Customer Name:</td><td>" + data.customer.name + "</td></tr>";
+        customerinfo.innerHTML += "<tr><td style='font-weight:bold;'>Address: </td><td>" + data.customer.address.street + " " + data.customer.address.unit + "<br/>" + data.customer.address.city + ", " + data.customer.address.state + "<br/>" + data.customer.address.zip + "</td>" 
+        customerinfo.innerHTML += "<tr><td style='font-weight:bold;'>Contact:</td><td>" + phoneFormat(data.customer.contact.phone_home) + " (Home)</td></tr>";
+        customerinfo.innerHTML += "</tbody>";
+    return customerinfo;
+}
 
 var options = {
         excluded: [':disabled'],
@@ -20,7 +33,13 @@ var options = {
                 data: $form.serialize(),
                 success: function(data) {
                     console.log('Great Success! Here is what we got to work with:');
-                    console.log(data);
+                    
+                    $('#customer-modal-form').modal('hide');
+                    var messageDiv = document.getElementById('customermessage');
+                    messageDiv.innerHTML += "<div class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> " + data.message + "</div>";
+                    printCustomer(data);
+                    
+                    
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('Something went wrong.');
