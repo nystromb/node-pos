@@ -51,37 +51,57 @@ module.exports = function(app, passport) {
 	// =====================================
 	// CREATE CUSTOMER ROUTE ===============
 	// =====================================
-    app.route('/create/customer')
+    app.route('/create/:collection')
         .post(function (req, res){
-            //test to see if is working first
-            console.log(req.body);
-            
-            //create a new customer using the customer schema
-            var newCustomer = new Customer();
-            //get the customer data from req.body
-            //should probably validate on the server-side. I'll get to that later..
-            newCustomer.name = req.body.customername;
-        
-            newCustomer.contact.phone_home = req.body.phonehome;
-            newCustomer.contact.phone_cell = req.body.phonecell;
-            newCustomer.contact.phone_work = req.body.phonework;
-        
-            newCustomer.address.street = req.body.customeraddr1;
-            newCustomer.address.unit = req.body.customeraddr2;
-            newCustomer.address.city = req.body.customercity;
-            newCustomer.address.state = req.body.customerstate;
-            newCustomer.address.zip = req.body.customerzip;
-            
-            //magically save the customer in the cloud.. Ohh la la
-            newCustomer.save(function(err){
-                if(err)
-                    res.send(err);
+            console.log(req.params);
+            if(req.params.collection == "customer"){
+                //create a new customer using the customer schema
+                // should probably do some server side validation / checking
+                // i'll get to that...
+                console.log(req.body);
+                var newCustomer = new Customer({
+                    name: req.body.customername,
+                    contact: {
+                        phone_home: req.body.phonehome,
+                        phone_cell: req.body.phonecell,
+                        phone_work: req.body.phonework
+                    },
+                    address: {
+                        street: req.body.customeraddr1,
+                        unit: req.body.customeraddr2,
+                        city: req.body.customercity,
+                        state: req.body.customerstate,
+                        zip: req.body.customerzip
+                    }
+                });
+                
+                //magically save the customer in the cloud.. Ohh la la
+                newCustomer.save(function(err){
+                    if(err)
+                        throw err;
 
-                res.send(JSON.stringify({
-                    message: "Customer has successfully been added.",
-                    customer: newCustomer
-                }));
-            });
+                    res.send(JSON.stringify({
+                        message: "Customer has successfully been added.",
+                        customer: newCustomer
+                    }));
+                });
+            } //end if
+        });
+
+    // =====================================
+	// AUTOCOMPLETE SEARCH ROUTING =========
+	// =====================================
+    app.route('/autocomplete/:collection')
+        .get(function(req,res) {
+            if(req.params.collection == "customer"){
+                console.log('autocomplete hitting');
+                Customer.find({}, function(err, user){
+                    if (err)
+                        throw err
+                        
+                    res.json(user);
+                });
+            }
         });
     
     
@@ -96,7 +116,7 @@ module.exports = function(app, passport) {
     
 };
 
-// route middleware to make sure
+// route middleware to make sure user is authenticated
 function isLoggedIn(req, res, next) {
 
 	// if user is authenticated in the session, carry on
