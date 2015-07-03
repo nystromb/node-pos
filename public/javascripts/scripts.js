@@ -5,7 +5,7 @@ $("#menu-toggle").click(function(e) {
 
 function phoneFormat(number){
     var p = number.toString();
-    var result = "(" + p.substr(0,3) + ") " + p.substr(3,3) + " - " + p.substr(6,9);
+    var result = "(" + p.substr(0,3) + ") " + p.substr(3,3) + "-" + p.substr(6,9);
     return result;
 }
 function printCustomer(data){
@@ -131,6 +131,31 @@ $(document).ready(function () {
     //reset form when modal is hidden
     $('#customer-modal-form').on('hidden.bs.modal', function() {
         $('#customer-form').formValidation('resetForm', true);
+    });
+    
+    $('#customer-search').autocomplete({
+        minLength: 3,
+        source: function(req, res) {
+            $.ajax({
+                url: '/autocomplete/customer',
+                dataType: 'json',
+                data: {term: req.term},
+                success: function(data){
+                    console.log(data);
+                    res($.map(data, function (match) {
+                        return {
+                            label: match.name + ": " + phoneFormat(match.contact.phone_home),
+                            value: match
+                        };
+                    }));
+                }
+            
+            });
+        },
+        focus: function( event, ui ) {
+            
+        },
+        
     });
     
 });

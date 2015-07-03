@@ -54,7 +54,7 @@ a {
     }
 }
 
-@media (min-width: 750px) {
+@media (min-width: 768px) {
     #customer-search-btn {
         margin-left:5px;
     }
@@ -84,4 +84,22 @@ a {
 
 .text-right {
     text-align: right;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.ui-autocomplete {
+    width: 20%;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.ui-menu-item {
+    border-bottom: 1px solid gray;
+    padding:5px;
 }

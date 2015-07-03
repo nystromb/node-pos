@@ -17,7 +17,8 @@ block content
         form.navbar-form.navbar-left
           .centered
             .form-group
-              input.form-control#customer-search(name='customer-name-search', placeholder='Search Customer', type='search')
+              .ui-widget
+                input.form-control#customer-search(name='customer-name-search', placeholder='Search Customer', type='search')
             button.btn.btn-default#customer-search-btn(type='button') Search
         form.navbar-form.navbar-right
           .centered
@@ -42,6 +43,11 @@ block content
                 th.centered Quantity
                 th.centered Price
               tbody
+                tr 
+                  td(colspan='4')
+                    button.btn.btn-success(type='button', aria-align='left')
+                      span.glyphicon.glyphicon-plus-sign
+                      span  Add Item
                 tr
                   td.text-right(colspan='3') Subtotal:
                   td.centered
