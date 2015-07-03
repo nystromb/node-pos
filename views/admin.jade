@@ -10,7 +10,7 @@ block content
       .container-fluid
         .navbar-header
           a.navbar-brand#menu-toggle(href='#menu-toggle')
-            img#menu-toggle(src='images/glyphicons-menu-hamburger.png')
+            span.glyphicon.glyphicon-menu-hamburger
         p.navbar-text.navbar-right.centered(style='margin-right:10px;') Signed in as #{user.name}
     .container-fluid
       .row
@@ -18,8 +18,7 @@ block content
           .centered
             .form-group
               .ui-widget
-                input.form-control#customer-search(name='customer-name-search', placeholder='Search Customer', type='search')
-            button.btn.btn-default#customer-search-btn(type='button') Search
+                input.form-control#customer-search(name='customer-name-search', placeholder='Search Customer', type='search', style='width:250px;')
         form.navbar-form.navbar-right
           .centered
             .form-group

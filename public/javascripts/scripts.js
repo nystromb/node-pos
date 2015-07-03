@@ -9,7 +9,9 @@ function phoneFormat(number){
     return result;
 }
 function printCustomer(data){
+    
     var customerinfo = document.getElementById('customer-info');
+        customerinfo.innerHTML = "";
         customerinfo.innerHTML += "<tbody>";
         customerinfo.innerHTML += "<tr><td style='font-weight:bold;'>Customer Name:</td><td>" + data.customer.name + "</td></tr>";
         customerinfo.innerHTML += "<tr><td style='font-weight:bold;'>Address: </td><td>" + data.customer.address.street + " " + data.customer.address.unit + "<br/>" + data.customer.address.city + ", " + data.customer.address.state + "<br/>" + data.customer.address.zip + "</td>" 
@@ -43,6 +45,7 @@ var options = {
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('Something went wrong.');
+                    //should throw a message to the user letting them know their request couldn't be processed..
                 }
             });
         },
@@ -139,23 +142,34 @@ $(document).ready(function () {
             $.ajax({
                 url: '/autocomplete/customer',
                 dataType: 'json',
-                data: {term: req.term},
+                data: { term: req.term },
                 success: function(data){
                     console.log(data);
-                    res($.map(data, function (match) {
+                    res($.map(data, function (obj) {
                         return {
-                            label: match.name + ": " + phoneFormat(match.contact.phone_home),
-                            value: match
+                            label: obj,
+                            value: obj.name
                         };
                     }));
                 }
             
             });
         },
-        focus: function( event, ui ) {
-            
-        },
-        
-    });
-    
+        select: function (event, ui) {
+            //do something
+            console.log("UI: ");
+            console.log(ui.item.label);
+            var data = {
+                customer:  ui.item.label
+            };
+            console.log(data);
+            printCustomer(data);
+        }
+    }).data( "ui-autocomplete" )._renderItem = function(ul, item){
+        //renders how results are shown in a list:
+        return $( "<li>" )
+                .data("ui-autocomplete-item", item)
+                .append(item.label.name + "<br>" + phoneFormat(item.label.contact.phone_home))
+                .appendTo(ul);
+    };
 });

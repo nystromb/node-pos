@@ -93,10 +93,22 @@ ul {
     padding:0;
 }
 
+/* AUTO COMPLETE CSS */
+
 .ui-autocomplete {
-    width: 20%;
+    width: 20% ;
     background-color: white;
     border: 1px solid gray;
+    border-radius: 5px;
+}
+.ui-helper-hidden-accessible{
+    display:none;
+}
+
+.ui-state-focus {
+    color:white;
+    background:#B2D1E5;
+    outline:none;
 }
 
 .ui-menu-item {
